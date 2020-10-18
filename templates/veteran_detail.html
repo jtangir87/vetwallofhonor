@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<main id="main">
+
+    <!-- ======= Bio Form Section ======= -->
+    <section id="bio-detail" class="bio-detail section-bg" style="margin-top:84px;">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>{{vet.name}} - {{vet.rank}}</h2>
+        </div>
+
+        <div class="row mt-5">
+          <div class="col-lg-6 text-center">
+            <img class="img-fluid" src="{{vet.image.url}}">
+          </div>
+
+          <div class="col-lg-6 vet-details">
+            <div class="row">
+                <div class="col-md-6 vet-info">
+                    <p><strong>Hometown: </strong>{{vet.hometown}}</p>
+                </div>
+                <div class="col-md-6 vet-info">
+                    <p><strong>County: </strong>{{vet.county}}</p>
+                </div>
+                <div class="col-md-6 vet-info">
+                    <p><strong>Date of Birth: </strong>{{vet.dob}}</p>
+                </div>
+                <div class="col-md-6 vet-info">
+                    <p><strong>Date of Casualty: </strong>{{vet.doc}}</p>
+                </div>     
+                <div class="col-md-6 vet-info">
+                    <p><strong>Branch: </strong>{{vet.branch}}</p>
+                </div>
+                <div class="col-md-6 vet-info">
+                    <p><strong>Rank: </strong>{{vet.rank}}</p>
+                </div>    
+                <div class="col-md-12 vet-info">
+                    <p><strong>Country of Service: </strong>{{vet.country}}</p>
+                </div>                
+            </div>
+          </div>
+          <div class="col-12 mt-5">
+          <h3>Biography</h3>
+          <p>{{vet.bio|safe}}</p>
+          </div>
+        </div>
+
+
+      </div>
+    </section><!-- End Bio Form Section -->
+
+
+</main>
+
+
+{% endblock content %}

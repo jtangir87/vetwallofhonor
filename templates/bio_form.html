@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block headscript %}
+{{form.media}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.5.1/tinymce.min.js"></script>
+<script>
+    tinymce.init({
+      selector: '#id_bio',
+      menubar: 'file edit view',
+      toolbar: 'undo redo | bold italic'
+    });
+    </script>
+{% endblock headscript %}
+
+
+{% block content %}
+
+
+<main id="main">
+
+    <!-- ======= Bio Form Section ======= -->
+    <section id="bio-form" class="bio-form section-bg" style="margin-top:84px;">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Submit a Biography</h2>
+          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+        </div>
+
+        <div class="row mt-5">
+          <div class="col-12">
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% bootstrap_form_errors form %}
+                <div class="row">
+                    <div class="col-md-6">
+                        {% bootstrap_field form.name %}
+                    </div>
+                    <div class="col-md-6">
+                        {% bootstrap_field form.image %}
+                    </div>
+                </div>
+                
+
+                <div class="row">
+                    <div class="col-md-6">
+                        {% bootstrap_field form.hometown %}
+                    </div>
+                    <div class="col-md-6">
+                        {% bootstrap_field form.county %}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        {% bootstrap_field form.dob %}
+                    </div>
+                    <div class="col-md-6">
+                        {% bootstrap_field form.doc %}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        {% bootstrap_field form.branch %}
+                    </div>
+                    <div class="col-md-6">
+                        {% bootstrap_field form.rank %}
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        {% bootstrap_field form.country %}
+                    </div>
+                    <div class="col-md-6">
+                        {% bootstrap_field form.status %}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="id_bio">Biography</label>
+                    <textarea name="bio" cols="40" rows="10" class="form-control" placeholder="Biography" title="" id="id_bio">
+                </textarea></div>
+              
+                
+                <div class="text-center">
+                    <button class="btn btn-primary" type="submit">Submit Biography</button>
+                </div>
+
+            </form>
+          </div>
+
+        </div>
+
+
+      </div>
+    </section><!-- End Bio Form Section -->
+
+
+</main>
+
+
+{% endblock content %}

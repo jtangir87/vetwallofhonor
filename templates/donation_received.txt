@@ -1,0 +1,7 @@
+
+
+From: {{name}}
+Phone: {{phone}}
+Email: {{email}}
+
+Amount: ${{amount}}

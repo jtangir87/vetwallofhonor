@@ -1,0 +1,8 @@
+Hi {{name}},
+
+Thank you for your generous contribution of ${{amount}} to the Southeastern Pennsylvania Veterans Virtual Wall of Honor Project! Your support is greatly appreciated!
+
+Sincerely,
+Eleanor O'Rangers
+Southeastern Pennsylvania Veterans Virtual Wall of Honor Project
+Southeastern Pennsylvania Cold War Historical Society

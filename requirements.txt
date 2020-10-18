@@ -1,0 +1,48 @@
+appdirs==1.4.4
+appnope==0.1.0
+asgiref==3.2.10
+autopep8==1.5.4
+backcall==0.2.0
+beautifulsoup4==4.9.3
+certifi==2020.6.20
+chardet==3.0.4
+click==7.1.2
+decorator==4.4.2
+Django==3.1.2
+django-bootstrap-datepicker-plus==3.0.5
+django-bootstrap-pagination==1.7.1
+django-bootstrap4==2.3.0
+django-tinymce==3.0.2
+idna==2.10
+importlib-metadata==2.0.0
+ipykernel @ file:///opt/concourse/worker/volumes/live/73e8766c-12c3-4f76-62a6-3dea9a7da5b7/volume/ipykernel_1596206701501/work/dist/ipykernel-5.3.4-py3-none-any.whl
+ipython @ file:///opt/concourse/worker/volumes/live/bb221eaa-cc1a-4ab2-40f7-74a2020a44b1/volume/ipython_1599056234390/work
+ipython-genutils==0.2.0
+jedi @ file:///opt/concourse/worker/volumes/live/152cd167-7b79-4fbd-5c97-d7b338805c2b/volume/jedi_1598371617305/work
+jupyter-client @ file:///tmp/build/80754af9/jupyter_client_1601311786391/work
+jupyter-core==4.6.3
+parso==0.7.0
+pathspec==0.8.0
+pexpect==4.8.0
+pickleshare==0.7.5
+Pillow==8.0.0
+prompt-toolkit @ file:///tmp/build/80754af9/prompt-toolkit_1602688806899/work
+psycopg2-binary==2.8.6
+ptyprocess==0.6.0
+pycodestyle==2.6.0
+Pygments @ file:///tmp/build/80754af9/pygments_1600458456400/work
+python-dateutil==2.8.1
+pytz==2020.1
+pyzmq==19.0.2
+requests==2.24.0
+six==1.15.0
+soupsieve==2.0.1
+sqlparse==0.4.1
+stripe==2.55.0
+toml==0.10.1
+tornado==6.0.4
+traitlets @ file:///tmp/build/80754af9/traitlets_1602787416690/work
+typing-extensions==3.7.4.3
+urllib3==1.25.10
+wcwidth @ file:///tmp/build/80754af9/wcwidth_1593447189090/work
+zipp==3.3.0
