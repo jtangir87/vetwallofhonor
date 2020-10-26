@@ -6,9 +6,23 @@
 <main id="main">
 
     <!-- ======= Bio Form Section ======= -->
-    <section id="bio-detail" class="bio-detail section-bg" style="margin-top:84px;">
+    <section id="bio-detail" class="bio-detail" style="margin-top:84px;">
       <div class="container">
-
+        <div class="row search-row mb-3 text-center" style="margin-left:5px">
+          <div class="col-lg-9 search-bar">
+            <form action="{% url 'vet_search' %}" method="get" style="margin-left: 10px; margin-bottom: 10px;">
+              <div class="input-group">
+                <input name="q" type="text" placeholder="Search by Name">	
+                <div class="input-group-append">
+                  <button class="btn btn-primary" type="submit"><i class="fa fa-search fa-sm"></i>Search</button>
+                </div>
+              </div>
+					  </form>
+          </div>
+          <div class="col-lg-3 search-bar">
+            <a href="{% url 'home' %}" class="btn btn-primary">Back to Wall of Honor</a>
+          </div> 
+        </div>
         <div class="section-title">
           <h2>{{vet.name}} - {{vet.rank}}</h2>
         </div>

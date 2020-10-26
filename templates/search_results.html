@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% load bootstrap_pagination %}
+
+{% block content %}
+
+
+<main id="main">
+
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio section-bg" style="margin-top:84px; min-height:100vh;">
+      <div class="container">
+
+        <div class="section-title" style="color:white;">
+          <h2 style="color:white;">Wall of Honor Search Results for "{{q}}"</h2>
+          <p style="color:white;">{{results}} results found.</p>
+        </div>
+
+        <div class="row search-row mb-3 text-center">
+          <div class="col-lg-9 search-bar">
+            <form action="{% url 'vet_search' %}" method="get" style="margin-left: 10px; margin-bottom: 10px;">
+              <div class="input-group">
+                <input name="q" type="text" placeholder="Search by Name">	
+                <div class="input-group-append">
+                  <button class="btn btn-primary" type="submit"><i class="fa fa-search fa-sm"></i>Search</button>
+                </div>
+              </div>
+					  </form>
+          </div>
+          <div class="col-lg-3 search-bar">
+            <a href="{% url 'home' %}" class="btn btn-primary">Back to Wall of Honor</a>
+          </div> 
+        </div>
+
+        <div class="row portfolio-container mb-3">
+          {% for vet in vets %}
+          <div class="col-lg-2 col-md-3 col-sm-6 portfolio-item">
+            <div class="portfolio-wrap">
+              <a href="{% url 'vet_detail' pk=vet.pk %}" title="More Details">
+                <img src="{{vet.image.url}}" class="img-fluid" alt="">
+                <div class="portfolio-info">
+                  <h4>{{vet.name|upper}}</h4>
+                  <p><strong>Hometown:</strong><br>{{vet.hometown}}</p>
+                </div>
+              </a>
+            </div>
+          </div>
+          {% empty %}
+          <div class="col-12 mb-4 portfolio-item" style="padding:20px">
+            <div class="text-center">
+              <h2 style="color:white;">Sorry, no result for "{{q}}" found</h2>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="row mb-3">
+        {% if results >= 1 %}
+        <div class="col-12 mb-4" style="padding:20px">
+          <div class="blog-pagination mt-4 mb-4">
+            {% bootstrap_paginate vets extra_pagination_classes="justify-content-center"%}
+          </div> 
+        </div>
+        {% endif %} 
+          <div class="col-12 text-center submit-bio" style="padding:20px">
+            <a class="btn" href="{% url 'submit_biography' %}">Submit a Biography</a>
+
+          </div>
+        </div>
+        
+
+      </div>
+    </section><!-- End Portfolio Section -->
+
+
+</main>
+
+
+{% endblock content %}

@@ -398,6 +398,10 @@ section {
 }
 
 .section-bg {
+  background-color: #023368;
+}
+
+.section-bg-light {
   background-color: #f4fbfe;
 }
 
@@ -738,6 +742,7 @@ section {
 }
 
 .portfolio .portfolio-item img {
+  border-radius: 15px;
   height: 200px;
   width: 160px;
 }
@@ -777,10 +782,11 @@ section {
   position: relative;
   overflow: hidden;
   z-index: 1;
-  background: rgba(255, 255, 255, 0.6);
+
 }
 
 .portfolio .portfolio-wrap::before {
+  border-radius: 15px;
   content: "";
   background: rgba(255, 255, 255, 0.6);
   position: absolute;

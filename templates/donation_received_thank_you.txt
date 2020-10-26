@@ -2,6 +2,10 @@ Hi {{name}},
 
 Thank you for your generous contribution of ${{amount}} to the Southeastern Pennsylvania Veterans Virtual Wall of Honor Project! Your support is greatly appreciated!
 
+Our tax identification number is 45-3080147. 
+  
+Please retain this receipt for income tax purposes. 
+
 Sincerely,
 Eleanor O'Rangers
 Southeastern Pennsylvania Veterans Virtual Wall of Honor Project

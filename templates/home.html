@@ -49,10 +49,9 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-lg-8 pt-4 pt-lg-0 d-flex flex-column justify-content-center mx-auto">
-          <h1>Title Here</h1>
-          <h2>Accusantium quam, aliquam ultricies eget tempor id, aliquam eget nibh et. Maecen aliquam, risus at semper. Proin iaculis purus consequat sem cure digni ssim. Donec porttitora entum.</h2>
-          <div><a href="#about" class="btn-get-started scrollto">Get Started</a></div>
+        <div class="col-lg-10 pt-4 pt-lg-0 d-flex flex-column justify-content-center mx-auto text-center">
+          <h1>Commemorating and remembering United States Military veterans of southeastern Pennsylvania.</h1>
+          <h2>Sponsored by the <a style="color:white;" href="https:coldwarhistory.org" target="_blank">Southeastern PA Cold War Historical Society</a></h2>
         </div>
       </div>
     </div>
@@ -103,20 +102,37 @@
 
 
     <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio">
+    <section id="portfolio" class="portfolio section-bg">
       <div class="container">
 
-        <div class="section-title">
-          <h2>Wall of Honor</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+        <div class="section-title" style="color:white;">
+          <h2 style="color:white;">Wall of Honor</h2>
+          <p class="mb-2">In honor of Veterans Day 2020, the Southeastern Pennsylvania Cold War Historical Society has created a Virtual Wall of Honor to commemorate and remember United States Military veterans who are current or former residents of southeastern Pennsylvania.</p>
+          <p class="mb-2">This project allows us to preserve the memories and share insights for each of the honorees’ military service in an accessible, virtual format.</p>
+          <p class="mb-2">Use the Name Search feature to find a name on the virtual wall, or browse the virtual wall below.</p>
+          <p class="mb-2" style="font-weight:bold;">We are always looking for more information about those we honor. If you have information, photographs or wish to leave a remembrance for any of the individuals on our Virtual Wall of Honor, please reach out to us via our <a href="#contact" class="scrollto">contact form</a></p>
         </div>
 
+        <div class="row search-row mb-3">
+          <div class="col-12 search-bar text-center">
+            <form action="{% url 'vet_search' %}" method="get" style="margin-left: 10px; margin-bottom: 10px;">
+              <div class="input-group">
+                <input name="q" type="text" placeholder="Search by Name">	
+                <div class="input-group-append">
+                  <button class="btn btn-primary" type="submit"><i class="fa fa-search fa-sm"></i>Search</button>
+                </div>
+              </div>
+					  </form>
+          </div> 
+        </div>
 
         <div class="row portfolio-container">
+
+
           {% for vet in vets %}
             
           
-          <div class="col-lg-2 col-md-4 col-sm-6 portfolio-item">
+          <div class="col-lg-2 col-md-3 col-6 portfolio-item">
             <div class="portfolio-wrap">
               <a href="{% url 'vet_detail' pk=vet.pk %}" title="More Details">
                 <img src="{{vet.image.url}}" class="img-fluid" alt="">
@@ -128,7 +144,7 @@
             </div>
           </div>
           {% endfor %}
-
+          
         </div>
         <div class="blog-pagination mt-4 mb-4">
           {% bootstrap_paginate vets extra_pagination_classes="justify-content-center"%}
@@ -144,12 +160,15 @@
  
 
     <!-- ======= Donate Section ======= -->
-    <section id="donate" class="donate section-bg">
+    <section id="donate" class="donate section-bg-light">
       <div class="container">
 
         <div class="section-title">
           <h2>Donate</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <p class="mb-2">The Southeastern Pennsylvania Virtual Wall of Honor Project is sponsored by the Southeastern Pennsylvania Cold War Historical Society, a 501©(3) organization (non-profit organization.)</p>
+          <p class="mb-2">If you choose to make a tax deductible donation to this project, please be assured that the Southeastern Pennsylvania Cold War Historical Society will apply funds to this project only, unless you specify otherwise. </p>
+          <p class="mb-2">If you would like specific information on how your donations are used by our organization, please <a href="#contact" class="scrollto">contact us</a> for details.</p>
+          <p>Our needs are modest, but we do appreciate the generosity of our supporters in helping us to pay tribute to our southeastern Pennsylvania veterans!</p>
         </div>
 
         <div class="row mt-5">
@@ -207,12 +226,17 @@
           <h2>Contact</h2>
         </div>
 
-        <div>
-          <iframe style="border:0; width: 100%; height: 270px;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48757.067992889075!2d-75.11612444454072!3d40.20201653322818!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x5a1363811611e2b7!2sThe%20Fuge!5e0!3m2!1sen!2sus!4v1599496654687!5m2!1sen!2sus" frameborder="0" allowfullscreen></iframe>
-        </div>
 
-        <div class="row mt-5">
-
+        <div class="row mt-2">
+          <div class="col-lg-3 mb-4 text-center">
+            <a href="https://coldwarhistory.org"><img src="{% static 'img/sepa-cw-logo-round.png' %}" class="img-fluid"></a>
+          </div>
+          <div class="col-lg-9 mb-4">
+            <p>The Southeastern Pennsylvania Virtual Wall of Honor Project is sponsored by the SE Pa Cold War Historical Society, would love to hear from you!</p>
+            <p>We prefer email to regular mail to ensure our timely response to you. Please complete the form provided on this page, or email us directly at the email address noted below.</p>
+            <p>We maintain a contact list of those who reach out to us so that we may keep you informed of occasional project updates and events related to our sister organization, the Southeastern Pennsylvania Cold War Historical Society. </p>
+            <p>Be assured that our mailing list remains confidential and we will never sell the list to third parties. If you do not wish to be on our email distribution list, kindly let us know and we will remove you.</p>
+          </div>
           <div class="col-lg-4">
             <div class="info">
               <div class="address">

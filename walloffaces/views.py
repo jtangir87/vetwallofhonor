@@ -193,3 +193,24 @@ def contact_us_form(request):
         messages.success(request, "Success! Thank you for contacting us!")
 
     return redirect(reverse("home"))
+
+
+def search_results(request):
+    q = request.GET.get("q")
+
+    vets_list = Veteran.objects.filter(approved=True, name__icontains=q)
+    page = request.GET.get("page", 1)
+
+    paginator = Paginator(vets_list, 24)
+
+    try:
+        vets = paginator.page(page)
+    except PageNotAnInteger:
+        vets = paginator.page(1)
+    except EmptyPage:
+        vets = paginator.page(paginator.num_pages)
+
+    donate_form = DonateForm()
+    context = {"vets": vets, "q": q, "results": vets_list.count()}
+
+    return render(request, "search_results.html", context)

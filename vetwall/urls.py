@@ -20,7 +20,7 @@ from django.views.generic import TemplateView
 from django.conf import settings
 from django.conf.urls.static import static
 
-from walloffaces.views import VeteranCreate, home_view, VeteranDetail, donation, confirm_donation, contact_us_form
+from walloffaces.views import VeteranCreate, home_view, VeteranDetail, donation, confirm_donation, contact_us_form, search_results
 
 # from django.contrib.sitemaps.views import sitemap
 # from .sitemaps import StaticViewSitemap, EventSitemap
@@ -34,11 +34,13 @@ admin.site.index_title = "Welcome to the SE PA Veterans Wall of Honor Portal"
 urlpatterns = [
     path("cms/", admin.site.urls),
     path("", home_view, name="home"),
-    path("submit-biography", VeteranCreate.as_view(), name="submit_biography"),
-    path("<int:pk>", VeteranDetail.as_view(), name="vet_detail"),
+    path("wall-of-honor/submit-biography",
+         VeteranCreate.as_view(), name="submit_biography"),
+    path("wall-of-honor/<int:pk>", VeteranDetail.as_view(), name="vet_detail"),
     path("donate/donation", donation, name="donation"),
     path("donate/confirm_donation", confirm_donation, name="confirm_donation"),
     path("contact_form", contact_us_form, name="contact_us_form"),
+    path("wall-of-honor/search", search_results, name="vet_search"),
     # path("", include("pages.urls")),
     # path("sitemap.xml", sitemap, {"sitemaps": sitemaps}, name="sitemap"),
     # path(
