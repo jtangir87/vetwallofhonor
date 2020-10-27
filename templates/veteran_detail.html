@@ -1,4 +1,17 @@
 {% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block headscript %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/5.5.1/tinymce.min.js"></script>
+<script>
+    tinymce.init({
+      selector: '#id_remembrance',
+      menubar: 'file edit view',
+      toolbar: 'undo redo | bold italic'
+    });
+</script>
+{% endblock headscript %}
+
 
 {% block content %}
 
@@ -58,8 +71,56 @@
             </div>
           </div>
           <div class="col-12 mt-5">
-          <h3>Biography</h3>
+          <h3>BIOGRAPHY</h3>
           <p>{{vet.bio|safe}}</p>
+          </div>
+        </div>
+        <div class="row remembrance-row mt-3">
+          <div class="col-12 text-center">
+            <button class="btn red-button" type="button" id="remembranceButton">Leave a Remembrance</button>
+          </div>
+          <div class="col-12">
+            <div class="show-or-hide">
+            
+
+                  <form method="POST" action="{% url 'submit_remembrance' vet_id=vet.id %}">
+                    {% csrf_token %}
+                    {% bootstrap_form_errors form %}
+                    {% bootstrap_field form.veteran %}
+                    {% bootstrap_field form.title %}
+                    <div class="form-group">
+                        <label for="id_remembrance">Remembrance</label>
+                        <textarea name="remembrance" cols="40" rows="10" class="form-control" placeholder="Remembrance" title="" id="id_remembrance">
+                    </textarea></div>
+                    <div class="row">
+                      <div class="col-lg-4">
+                        {% bootstrap_field form.name %}
+                      </div>
+                      <div class="col-lg-4">
+                        {% bootstrap_field form.email %}
+                      </div>
+                      <div class="col-lg-4">
+                        {% bootstrap_field form.relationship %}
+                      </div>
+                    </div>
+                      <div class="text-right">
+                        <button type="submit" class="btn btn-primary">Submit Remembrance</button>
+                      </div>
+
+                  </form>
+              
+            </div>
+          </div>
+          <div class="col-12 mt-2 remembrances">
+            <h2>REMEMBRANCES</h2>
+            {% for rem in vet.get_remembrances.all  %}
+            <div class="remembrance-container">
+              <p class="remembrance-submittor">Posted On: {{rem.created_at}} | Posted By: {{rem.name}} - {{rem.relationship}}</p>
+              <h4>{{rem.title|upper}}</h4>
+              <p>{{rem.remembrance|safe}}</p>
+              
+            </div>
+            {% endfor %}
           </div>
         </div>
 
@@ -72,3 +133,20 @@
 
 
 {% endblock content %}
+
+{% block footscript %}
+<script>
+$(function() {
+  if($('input#id_title').val() || $('input#id_remembrance').val() || $('input#id_name').val() || $('input#id_email').val() ){
+    $('.show-or-hide').show();
+  } else {
+    $('.show-or-hide').hide();
+  }
+});
+$("#remembranceButton").click(function() {
+    $('.show-or-hide').toggle();
+});
+
+</script>
+
+{% endblock footscript %}

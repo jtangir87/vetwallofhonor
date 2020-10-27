@@ -1,3 +1,4 @@
+from django.http.response import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views.generic import FormView, CreateView, DetailView
@@ -10,7 +11,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 
 from .models import Veteran
-from .forms import BioForm, DonateForm
+from .forms import BioForm, DonateForm, RemembranceForm
 
 
 import stripe
@@ -81,6 +82,47 @@ class VeteranDetail(DetailView):
     model = Veteran
     template_name = "veteran_detail.html"
     context_object_name = "vet"
+
+    def get_context_data(self, **kwargs):
+        context = super(VeteranDetail, self).get_context_data(**kwargs)
+        context["form"] = RemembranceForm(initial={"veteran": self.object.id})
+        return context
+
+
+def remembrance_form(request, vet_id):
+    if request.method == "POST":
+        form = RemembranceForm(request.POST or None)
+        if form.is_valid():
+            form.save()
+            ## EMAIL ELEANOR ##
+            template = get_template("remembrance_received.txt")
+            context = {
+            }
+            content = template.render(context)
+            send_mail(
+                "New Remembrance",
+                content,
+                "Vet Wall <donotreply@elevatedwebsystems.com>",
+                ["mail@coldwarhistory.org"],
+                fail_silently=False,
+            )
+
+            messages.success(
+                request, "Success! Thank you for submitting your remembrance! Once approved, it will display on this wall forever")
+
+            return HttpResponseRedirect(reverse("vet_detail", kwargs={"pk": vet_id}))
+
+        else:
+            print(form.errors)
+            form = RemembranceForm(request.POST)
+            errors = form.errors
+            vet = Veteran.objects.filter(id=vet_id).first()
+            context = {
+                "errors": errors,
+                "form": form,
+                "vet": vet,
+            }
+            return render(request, "veteran_detail.html", context)
 
 
 def donation(request):

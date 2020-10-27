@@ -39,7 +39,17 @@ h1, h2, h3, h4, h5, h6 {
   color:white;
 }
 
+.red-button {
+  background-color:#b22234; 
+  border-color:#b22234; 
+  color:white;
+}
 
+.red-button:hover {
+  background-color:#3C3B6E; 
+  border-color:#3C3B6E; 
+  color:white;
+}
 /*--------------------------------------------------------------
 # Back to top button
 --------------------------------------------------------------*/
@@ -895,17 +905,7 @@ section {
   bottom: 15px;
   right: 15px;
 }
-.submit-bio a {
-  background-color:#b22234; 
-  border-color:#b22234; 
-  color:white;
-}
 
-.submit-bio a:hover {
-  background-color:#3C3B6E; 
-  border-color:#3C3B6E; 
-  color:white;
-}
 
 
 /*--------------------------------------------------------------
@@ -1384,3 +1384,20 @@ section {
   max-height: 250px;
 }
 
+
+
+.remembrance-container {
+  border: 1px solid #095fbc;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.remembrance-container h4 {
+  font-weight: 900;
+}
+
+.remembrance-container .remembrance-submittor {
+  font-size: 12px;
+  font-weight: 600;
+  font-style: italic;
+}

@@ -1,7 +1,7 @@
 from django import forms
 from bootstrap_datepicker_plus import DatePickerInput
 
-from .models import Veteran
+from .models import Veteran, Remembrance
 
 
 class BioForm(forms.ModelForm):
@@ -20,3 +20,14 @@ class DonateForm(forms.Form):
     email = forms.EmailField()
     phone = forms.CharField(max_length=11, label="Phone Number")
     amount = forms.IntegerField()
+
+
+class RemembranceForm(forms.ModelForm):
+    veteran = forms.ModelChoiceField(
+        queryset=Veteran.objects.all(), widget=forms.HiddenInput()
+    )
+
+    class Meta:
+        model = Remembrance
+        fields = ("veteran", "title", "remembrance",
+                  "name", "email", "relationship")
