@@ -21,6 +21,20 @@
     <!-- ======= Bio Form Section ======= -->
     <section id="bio-detail" class="bio-detail" style="margin-top:84px;">
       <div class="container">
+
+        <div class="section-title">
+          <h2>Welcome to our virtual biography and remembrance page!</h2>
+
+        </div>
+
+        <div class="row">
+          <p class="mb-2">To submit biographical information for a United States Military veteran who is a current or former resident of southeastern Pennsylvania, please use the form below to provide requested information.
+            Remembrances may be left by family members, friends or acquaintances of the veteran in the Remembrance field at the bottom of the page.
+          </p>
+          <p class="mb-2">If you have difficulty in completing or submitting biographical information or a remembrance, please <a href="{% url 'home' %}#contact">contact us</a> for assistance.
+          <p>Thank you for contributing to our project!</p>
+        </div>
+
         <div class="row search-row mb-3 text-center" style="margin-left:5px">
           <div class="col-lg-9 search-bar">
             <form action="{% url 'vet_search' %}" method="get" style="margin-left: 10px; margin-bottom: 10px;">
@@ -41,11 +55,11 @@
         </div>
 
         <div class="row mt-5">
-          <div class="col-lg-6 text-center">
+          <div class="col-lg-4 text-center">
             <img class="img-fluid" src="{{vet.image.url}}">
           </div>
 
-          <div class="col-lg-6 vet-details">
+          <div class="col-lg-8 vet-details">
             <div class="row">
                 <div class="col-md-6 vet-info">
                     <p><strong>Hometown: </strong>{{vet.hometown}}</p>
