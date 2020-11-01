@@ -166,13 +166,16 @@
         <div class="section-title">
           <h2>Donate</h2>
           <p class="mb-2">The Southeastern Pennsylvania Virtual Wall of Honor Project is sponsored by the Southeastern Pennsylvania Cold War Historical Society, a 501©(3) organization (non-profit organization.)</p>
-          <p class="mb-2">If you choose to make a tax deductible donation to this project, please be assured that the Southeastern Pennsylvania Cold War Historical Society will apply funds to this project only, unless you specify otherwise. </p>
-          <p class="mb-2">If you would like specific information on how your donations are used by our organization, please <a href="#contact" class="scrollto">contact us</a> for details.</p>
-          <p>Our needs are modest, but we do appreciate the generosity of our supporters in helping us to pay tribute to our southeastern Pennsylvania veterans!</p>
+
         </div>
 
         <div class="row mt-5">
-          <div class="col-12">
+          <div class="col-lg-6">
+          <p class="mb-2">If you choose to make a tax deductible donation to this project, please be assured that the Southeastern Pennsylvania Cold War Historical Society will apply funds to this project only, unless you specify otherwise. </p>
+          <p class="mb-2">If you would like specific information on how your donations are used by our organization, please <a href="#contact" class="scrollto">contact us</a> for details.</p>
+          <p>Our needs are modest, but we do appreciate the generosity of our supporters in helping us to pay tribute to our southeastern Pennsylvania veterans!</p>
+          </div>
+          <div class="col-lg-6">
             {% if stripe_error %}
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
               <strong>Payment Error: </strong> {{stripe_error}}
@@ -184,28 +187,23 @@
             <form method="POST" action="{% url 'donation' %}" id="payment-form">
               {% csrf_token %}
               {% bootstrap_form_errors donate_form %}
-              <div class="row">
-                <div class="col-md-4">
+
                   {% bootstrap_field donate_form.name show_label=False %}
-                </div>
-                <div class="col-md-4">
+
                   {% bootstrap_field donate_form.email show_label=False %}
-                </div>
-                <div class="col-md-4">
+
                   {% bootstrap_field donate_form.phone show_label=False %}
-                </div>
-                <div class="col-md-6">
+
                   {% bootstrap_field donate_form.amount show_label=False addon_before="$" %}
-                </div>
-                <div class="col-md-6">
+
                   <div id="card-element">
                     <!-- A Stripe Element will be inserted here. -->
                   </div>
-                </div>
-                <div class="col-12 text-center mt-3">
+
+                <div class="text-center mt-3">
                   <button type="submit" class="btn btn-primary donate-btn">Make Donation</button>
                 </div>
-              </div>
+           
             </form>
           </div>
 

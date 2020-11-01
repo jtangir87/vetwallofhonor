@@ -57,7 +57,7 @@
                     <p><strong>Date of Birth: </strong>{{vet.dob}}</p>
                 </div>
                 <div class="col-md-6 vet-info">
-                    <p><strong>Date of Casualty: </strong>{{vet.doc}}</p>
+                    <p><strong>Date of Casualty: </strong>{{vet.doc|default_if_none:""}}</p>
                 </div>     
                 <div class="col-md-6 vet-info">
                     <p><strong>Branch: </strong>{{vet.branch}}</p>
@@ -65,9 +65,12 @@
                 <div class="col-md-6 vet-info">
                     <p><strong>Rank: </strong>{{vet.rank}}</p>
                 </div>    
-                <div class="col-md-12 vet-info">
+                <div class="col-md-6 vet-info">
                     <p><strong>Country of Service: </strong>{{vet.country}}</p>
-                </div>                
+                </div>  
+                <div class="col-md-6 vet-info">
+                    <p><strong>Status: </strong>{{vet.status}}</p>
+                </div>               
             </div>
           </div>
           <div class="col-12 mt-5">
