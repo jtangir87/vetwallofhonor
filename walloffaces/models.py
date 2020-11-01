@@ -41,9 +41,9 @@ class Veteran(models.Model):
     name = models.CharField(max_length=150)
     hometown = models.CharField(max_length=100)
     county = models.CharField(max_length=100, choices=COUNTY_CHOICES)
-    dob = models.DateField(verbose_name="Date of Birth")
+    dob = models.DateField(verbose_name="Date of Birth", blank=True, null=True)
     doc = models.DateField(
-        verbose_name="Date of Casualty", blank=True, null=True)
+        verbose_name="Date of Casualty", blank=True, null=True, help_text="Leave blank if veteran is still living")
     branch = models.CharField(
         max_length=150, verbose_name="Branch of Service", choices=BRANCH_CHOICES)
     rank = models.CharField(max_length=50)

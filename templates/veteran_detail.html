@@ -68,7 +68,7 @@
                     <p><strong>County: </strong>{{vet.county}}</p>
                 </div>
                 <div class="col-md-6 vet-info">
-                    <p><strong>Date of Birth: </strong>{{vet.dob}}</p>
+                    <p><strong>Date of Birth: </strong>{{vet.dob|default_if_none:""}}</p>
                 </div>
                 <div class="col-md-6 vet-info">
                     <p><strong>Date of Casualty: </strong>{{vet.doc|default_if_none:""}}</p>

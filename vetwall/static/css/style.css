@@ -1401,3 +1401,8 @@ section {
   font-weight: 600;
   font-style: italic;
 }
+
+.required-field label:after {
+  content:"*";
+  color: red;
+}
