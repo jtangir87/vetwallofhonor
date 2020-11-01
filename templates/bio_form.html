@@ -24,13 +24,21 @@
       <div class="container">
 
         <div class="section-title">
-          <h2>Submit a Biography</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <h2>Submit a Biography</h2>          
+        </div>
+
+        <div class="row">
+          <p class="mb-2">To submit biographical information for a United States Military veteran who is a current or former resident of southeastern Pennsylvania, please use the form below to provide requested information.
+            Remembrances may be left by family members, friends or acquaintances of the veteran in the Remembrance field at the bottom of the page.
+          </p>
+          <p class="mb-2">If you have difficulty in completing or submitting biographical information or a remembrance, please <a href="{% url 'home' %}#contact">contact us</a> for assistance.
+          <p>Thank you for contributing to our project!</p>
         </div>
 
         <div class="row mt-5">
           <div class="col-12">
             <form method="POST" enctype="multipart/form-data">
+            <p style="color:red;">* indicates required field</p>
                 {% csrf_token %}
                 {% bootstrap_form_errors form %}
                 <div class="row">
@@ -82,8 +90,29 @@
                     <label for="id_bio">Biography</label>
                     <textarea name="bio" cols="40" rows="10" class="form-control" placeholder="Biography" title="" id="id_bio">
                 </textarea></div>
-              
-                
+                <p>You can add up to 6 additional images to the biography page</p>
+                <div class="row">
+                    <div class="col-md-4">
+                        {% bootstrap_field form.adtl_img_1 %}
+                    </div>
+                    <div class="col-md-4">
+                        {% bootstrap_field form.adtl_img_2 %}
+                    </div>
+                    <div class="col-md-4">
+                        {% bootstrap_field form.adtl_img_3 %}
+                    </div> 
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        {% bootstrap_field form.adtl_img_4 %}
+                    </div>
+                    <div class="col-md-4">
+                        {% bootstrap_field form.adtl_img_5 %}
+                    </div>
+                    <div class="col-md-4">
+                        {% bootstrap_field form.adtl_img_6 %}
+                    </div>
+                </div>         
                 <div class="text-center">
                     <button class="btn btn-primary" type="submit">Submit Biography</button>
                 </div>

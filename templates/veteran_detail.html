@@ -22,18 +22,10 @@
     <section id="bio-detail" class="bio-detail" style="margin-top:84px;">
       <div class="container">
 
-        <div class="section-title">
+        {% comment %} <div class="section-title">
           <h2>Welcome to our virtual biography and remembrance page!</h2>
 
-        </div>
-
-        <div class="row">
-          <p class="mb-2">To submit biographical information for a United States Military veteran who is a current or former resident of southeastern Pennsylvania, please use the form below to provide requested information.
-            Remembrances may be left by family members, friends or acquaintances of the veteran in the Remembrance field at the bottom of the page.
-          </p>
-          <p class="mb-2">If you have difficulty in completing or submitting biographical information or a remembrance, please <a href="{% url 'home' %}#contact">contact us</a> for assistance.
-          <p>Thank you for contributing to our project!</p>
-        </div>
+        </div> {% endcomment %}
 
         <div class="row search-row mb-3 text-center" style="margin-left:5px">
           <div class="col-lg-9 search-bar">
@@ -56,7 +48,9 @@
 
         <div class="row mt-5">
           <div class="col-lg-4 text-center">
-            <img class="img-fluid" src="{{vet.image.url}}">
+            <a href="{{vet.image.url}}" data-gall="portfolioGallery" class="venobox">
+              <img class="img-fluid" src="{{vet.image.url}}">
+            </a>
           </div>
 
           <div class="col-lg-8 vet-details">
@@ -87,6 +81,54 @@
                 </div>               
             </div>
           </div>
+          
+          <div class="col-12 mt-2">
+            <div class="row">
+            {% if vet.adtl_img_1 %}
+              <div class="col-lg-2 col-md-3">
+                <a href="{{vet.adtl_img_1.url}}" data-gall="portfolioGallery" class="venobox">
+                  <img class="img-fluid" src="{{vet.adtl_img_1.url}}">
+                </a>
+              </div>
+            {% endif %}
+            {% if vet.adtl_img_2 %}
+              <div class="col-lg-2 col-md-3">
+                <a href="{{vet.adtl_img_2.url}}" data-gall="portfolioGallery" class="venobox">
+                  <img class="img-fluid" src="{{vet.adtl_img_2.url}}">
+                </a>
+              </div>
+            {% endif %}
+            {% if vet.adtl_img_3 %}
+              <div class="col-lg-2 col-md-3">
+                <a href="{{vet.adtl_img_3.url}}" data-gall="portfolioGallery" class="venobox">
+                  <img class="img-fluid" src="{{vet.adtl_img_3.url}}">
+                </a>
+              </div>
+            {% endif %}
+            {% if vet.adtl_img_4 %}
+              <div class="col-lg-2 col-md-3">
+                <a href="{{vet.adtl_img_4.url}}" data-gall="portfolioGallery" class="venobox">
+                  <img class="img-fluid" src="{{vet.adtl_img_4.url}}">
+                </a>
+              </div>
+            {% endif %}        
+            {% if vet.adtl_img_5 %}
+              <div class="col-lg-2 col-md-3">
+                <a href="{{vet.adtl_img_5.url}}" data-gall="portfolioGallery" class="venobox">
+                  <img class="img-fluid" src="{{vet.adtl_img_5.url}}">
+                </a>
+              </div>
+            {% endif %}
+            {% if vet.adtl_img_6 %}
+              <div class="col-lg-2 col-md-3">
+                <a href="{{vet.adtl_img_6.url}}" data-gall="portfolioGallery" class="venobox">
+                  <img class="img-fluid" src="{{vet.adtl_img_6.url}}">
+                </a>
+              </div>
+            {% endif %}
+            </div>
+          </div>
+          
           <div class="col-12 mt-5">
           <h3>BIOGRAPHY</h3>
           <p>{{vet.bio|safe}}</p>

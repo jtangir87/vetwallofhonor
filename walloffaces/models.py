@@ -54,6 +54,18 @@ class Veteran(models.Model):
         upload_to=veteran_images, verbose_name="Headshot")
     bio = models.TextField(verbose_name="Biography")
     approved = models.BooleanField(default=False)
+    adtl_img_1 = models.ImageField(
+        upload_to=veteran_images, blank=True, null=True, verbose_name="Additional Image 1")
+    adtl_img_2 = models.ImageField(
+        upload_to=veteran_images, blank=True, null=True, verbose_name="Additional Image 2")
+    adtl_img_3 = models.ImageField(
+        upload_to=veteran_images, blank=True, null=True, verbose_name="Additional Image 3")
+    adtl_img_4 = models.ImageField(
+        upload_to=veteran_images, blank=True, null=True, verbose_name="Additional Image 4")
+    adtl_img_5 = models.ImageField(
+        upload_to=veteran_images, blank=True, null=True, verbose_name="Additional Image 5")
+    adtl_img_6 = models.ImageField(
+        upload_to=veteran_images, blank=True, null=True, verbose_name="Additional Image 6")
 
     def __str__(self):
         return self.name

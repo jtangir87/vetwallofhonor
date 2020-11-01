@@ -46,7 +46,9 @@ def home_view(request):
 class VeteranCreate(SuccessMessageMixin, CreateView):
     model = Veteran
     fields = ("name", "hometown", "county", "dob", "doc", "branch",
-              "rank", "status", "country", "image", "bio")
+              "rank", "status", "country", "image", "bio", "adtl_img_1",
+              "adtl_img_2", "adtl_img_3", "adtl_img_4", "adtl_img_5",
+              "adtl_img_6")
     template_name = "bio_form.html"
     success_url = "/"
     success_message = "Veteran submitted successfully!"
