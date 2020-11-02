@@ -65,7 +65,11 @@
                     <p><strong>Date of Birth: </strong>{{vet.dob|default_if_none:""}}</p>
                 </div>
                 <div class="col-md-6 vet-info">
+                    {% if vet.status == "Deceased (Not in Action)" %}
+                    <p><strong>Date of Death: </strong>{{vet.doc|default_if_none:""}}</p>
+                    {% else %}
                     <p><strong>Date of Casualty: </strong>{{vet.doc|default_if_none:""}}</p>
+                    {% endif %}
                 </div>     
                 <div class="col-md-6 vet-info">
                     <p><strong>Branch: </strong>{{vet.branch}}</p>

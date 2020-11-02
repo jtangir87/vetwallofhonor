@@ -28,7 +28,7 @@ STATUS_CHOICES = [
     ("Killed In Action", "Killed In Action"),
     ("Missing In Action", "Missing In Action"),
     ("Remains Recovered", "Remains Recovered"),
-    ("Deceased", "Deceased"),
+    ("Deceased (Not in Action)", "Deceased (Not in Action)"),
 ]
 
 
@@ -43,7 +43,7 @@ class Veteran(models.Model):
     county = models.CharField(max_length=100, choices=COUNTY_CHOICES)
     dob = models.DateField(verbose_name="Date of Birth", blank=True, null=True)
     doc = models.DateField(
-        verbose_name="Date of Casualty", blank=True, null=True, help_text="Leave blank if veteran is still living")
+        verbose_name="Date of Death", blank=True, null=True, help_text="Leave blank if veteran is still living")
     branch = models.CharField(
         max_length=150, verbose_name="Branch of Service", choices=BRANCH_CHOICES)
     rank = models.CharField(max_length=50)
