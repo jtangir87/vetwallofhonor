@@ -17,6 +17,20 @@ class BioForm(forms.ModelForm):
         }
 
 
+class BioFormAdmin(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super(BioFormAdmin, self).__init__(*args, **kwargs)
+        self.fields['bio'].widget.attrs['class'] = 'tiny-class'
+
+    class Meta:
+        model = Veteran
+        fields = ("name", "hometown", "county", "dob", "doc", "branch",
+                  "rank", "status", "country", "image", "bio", "adtl_img_1",
+                  "adtl_img_2", "adtl_img_3", "adtl_img_4", "adtl_img_5",
+                  "adtl_img_6")
+
+
 class DonateForm(forms.Form):
     name = forms.CharField(max_length=100)
     email = forms.EmailField()
