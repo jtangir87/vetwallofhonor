@@ -49,6 +49,7 @@
           <li {% if '/wall-of-honor' in request.path %}class="active"{% endif %}><a href="{% url 'home' %}#portfolio">Wall of Honor</a></>
           <li {% if '/donate' in request.path %}class="active"{% endif %}><a href="{% url 'home' %}#donate">Donate</a></li>
           <li><a href="{% url 'home' %}#contact">Contact</a></li>
+          <li class="cold-war-logo"><a href="https://coldwarhistory.org" target="_blank"><img src="{% static 'img/cold-war-history-logo-black.png' %}" alt="cold war historical society logo"></a></li>
           
         </ul>
       </nav><!-- .nav-menu -->
