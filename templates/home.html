@@ -265,7 +265,7 @@
 
           <div class="col-lg-8 mt-5 mt-lg-0">
 
-            <form action="{% url 'contact_us_form' %}" method="post" role="form" class="php-email-form">
+            <form action="{% url 'contact_us_form' %}" method="post" role="form" class="php-email-form" id="contactForm">
               {% csrf_token %}
               <div class="form-row">
                 <div class="col-md-6 form-group">
@@ -285,7 +285,14 @@
                 <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
 
               </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
+                <div class="text-center">
+                  <button class="g-recaptcha" 
+                    data-sitekey="6LdTxBUaAAAAAAbdD34Vt64t_X-4j9yORB2c0Pzm" 
+                    data-callback='onSubmit' 
+                    data-action='submit'             
+                    type="submit" 
+                    title="Send Message">Send Message</button>
+                </div>
             </form>
 
           </div>
