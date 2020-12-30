@@ -214,27 +214,29 @@ def confirm_donation(request):
 
 def contact_us_form(request):
     if request.method == "POST":
+
         name = request.POST.get("name")
         phone = request.POST.get("phone")
         email = request.POST.get("email")
         message = request.POST.get("message")
-
-        template = get_template("contact_us.txt")
-        context = {
-            "name": name,
-            "phone": phone,
-            "email": email,
-            "message": message,
-        }
-        content = template.render(context)
-        send_mail(
-            "New Contact Us Submitted",
-            content,
-            "Veterans Wall of Honor<website@elevatedwebsystems.com>",
-            ["mail@coldwarhistory.org"],
-            fail_silently=False,
-        )
-        messages.success(request, "Success! Thank you for contacting us!")
+        honeypot = request.POST.get("address")
+        if not honeypot:
+            template = get_template("contact_us.txt")
+            context = {
+                "name": name,
+                "phone": phone,
+                "email": email,
+                "message": message,
+            }
+            content = template.render(context)
+            send_mail(
+                "New Contact Us Submitted",
+                content,
+                "Veterans Wall of Honor<website@elevatedwebsystems.com>",
+                ["mail@coldwarhistory.org"],
+                fail_silently=False,
+            )
+            messages.success(request, "Success! Thank you for contacting us!")
 
     return redirect(reverse("home"))
 
