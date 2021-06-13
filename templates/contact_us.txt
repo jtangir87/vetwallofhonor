@@ -1,7 +1,8 @@
 
 
 From: {{name}}
-Phone: {{phone}}
+
 Email: {{email}}
 
+Subject: {{subject}}
 Message: {{message|safe}}
