@@ -95,24 +95,32 @@ def remembrance_form(request, vet_id):
     if request.method == "POST":
         form = RemembranceForm(request.POST or None)
         if form.is_valid():
-            form.save()
-            ## EMAIL ELEANOR ##
-            template = get_template("remembrance_received.txt")
-            context = {
-            }
-            content = template.render(context)
-            send_mail(
-                "New Remembrance",
-                content,
-                "Vet Wall <donotreply@elevatedwebsystems.com>",
-                ["mail@coldwarhistory.org"],
-                fail_silently=False,
-            )
+            validator = form.cleaned_data['validator']
+            print(validator)
+            if validator == "5":
+                form.save()
+                ## EMAIL ELEANOR ##
+                template = get_template("remembrance_received.txt")
+                context = {
+                }
+                content = template.render(context)
+                send_mail(
+                    "New Remembrance",
+                    content,
+                    "Vet Wall <donotreply@elevatedwebsystems.com>",
+                    ["mail@coldwarhistory.org"],
+                    fail_silently=False,
+                )
 
-            messages.success(
-                request, "Success! Thank you for submitting your remembrance! Once approved, it will display on this wall forever")
+                messages.success(
+                    request, "Success! Thank you for submitting your remembrance! Once approved, it will display on this wall forever")
 
-            return HttpResponseRedirect(reverse("vet_detail", kwargs={"pk": vet_id}))
+                return HttpResponseRedirect(reverse("vet_detail", kwargs={"pk": vet_id}))
+            else:
+                messages.warning(
+                    request, "Caught ya! It looks like you're not a human")
+
+                return HttpResponseRedirect(reverse("vet_detail", kwargs={"pk": vet_id}))
 
         else:
             print(form.errors)

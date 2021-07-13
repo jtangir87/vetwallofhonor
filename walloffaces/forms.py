@@ -42,6 +42,8 @@ class RemembranceForm(forms.ModelForm):
     veteran = forms.ModelChoiceField(
         queryset=Veteran.objects.all(), widget=forms.HiddenInput()
     )
+    validator = forms.CharField(max_length=40,
+                                required=True, label="2 + 3 =", help_text="Please prove that you're human")
 
     class Meta:
         model = Remembrance
