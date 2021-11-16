@@ -227,8 +227,8 @@ def contact_us_form(request):
         phone = request.POST.get("phone")
         email = request.POST.get("email")
         message = request.POST.get("message")
-        honeypot = request.POST.get("address")
-        if not honeypot:
+        math_check = request.POST.get("math_check")
+        if int(math_check) == 6:
             template = get_template("contact_us.txt")
             context = {
                 "name": name,
@@ -245,6 +245,8 @@ def contact_us_form(request):
                 fail_silently=False,
             )
             messages.success(request, "Success! Thank you for contacting us!")
+        else:
+            print("math check failed")
 
     return redirect(reverse("home"))
 
