@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "bootstrap4",
     'bootstrap_datepicker_plus',
     "walloffaces",
+    'django_recaptcha',
 ]
 
 MIDDLEWARE = [
@@ -143,6 +144,8 @@ MEDIA_URL = "/media/"
 
 EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 EMAIL_FILE_PATH = str(BASE_DIR.joinpath("sent-emails"))
+
+RECAPTCHA_REQUIRED_SCORE = 0.85
 
 
 try:

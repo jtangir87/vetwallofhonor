@@ -1,5 +1,5 @@
 from django.http.response import HttpResponseRedirect
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from django.urls import reverse
 from django.views.generic import FormView, CreateView, DetailView
 from bootstrap_datepicker_plus import DatePickerInput
@@ -11,7 +11,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 
 from .models import Veteran
-from .forms import BioForm, DonateForm, RemembranceForm
+from .forms import BioForm, DonateForm, RemembranceForm, ContactForm
 
 
 import stripe
@@ -37,7 +37,8 @@ def home_view(request):
         vets = paginator.page(paginator.num_pages)
 
     donate_form = DonateForm()
-    context = {"vets": vets, "donate_form": donate_form,
+    contact_form = ContactForm()
+    context = {"vets": vets, "donate_form": donate_form, "contact_form": contact_form,
                "stripe_pub_key": stripe_pub_key}
 
     return render(request, "home.html", context)
@@ -222,19 +223,17 @@ def confirm_donation(request):
 
 def contact_us_form(request):
     if request.method == "POST":
+        form = ContactForm(request.POST) 
 
-        name = request.POST.get("name")
-        phone = request.POST.get("phone")
-        email = request.POST.get("email")
-        message = request.POST.get("message")
-        math_check = request.POST.get("math_check")
-        if int(math_check) == 6:
+        
+        if form.is_valid():
+            data = form.cleaned_data
             template = get_template("contact_us.txt")
             context = {
-                "name": name,
-                "phone": phone,
-                "email": email,
-                "message": message,
+                "name": data["name"],
+                "subject": data["subject"],
+                "email": data["email"],
+                "message": data["message"],
             }
             content = template.render(context)
             send_mail(
@@ -246,7 +245,7 @@ def contact_us_form(request):
             )
             messages.success(request, "Success! Thank you for contacting us!")
         else:
-            print("math check failed")
+            print("BOT!")
 
     return redirect(reverse("home"))
 

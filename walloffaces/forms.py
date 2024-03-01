@@ -1,5 +1,8 @@
 from django import forms
 from bootstrap_datepicker_plus import DatePickerInput
+from django_recaptcha.fields import ReCaptchaField
+from django_recaptcha.widgets import ReCaptchaV3
+
 
 from .models import Veteran, Remembrance
 
@@ -49,3 +52,10 @@ class RemembranceForm(forms.ModelForm):
         model = Remembrance
         fields = ("veteran", "title", "remembrance",
                   "name", "email", "relationship")
+
+class ContactForm(forms.Form):
+    name = forms.CharField(max_length=100) 
+    email = forms.EmailField()
+    subject = forms.CharField(max_length=100) 
+    message = forms.CharField(widget=forms.Textarea) 
+    captcha = ReCaptchaField(widget=ReCaptchaV3) 

@@ -226,43 +226,22 @@
 
           <div class="col-lg-8 mt-5 mt-lg-0">
 
-            <form action="{% url 'contact_us_form' %}" method="post" role="form" class="php-email-form" id="contactForm">
+            <form action="{% url 'contact_us_form' %}" method="POST" id="contactForm">
               {% csrf_token %}
-              <div class="form-row">
-                <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
-                  
-                </div>
-                <div style="display:none">
-                  <input type="text" name="address" class="form-control" id="address" placeholder="Your Address"/>
-                </div>
-                <div class="col-md-6 form-group">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
-  
-                </div>
-              </div>
-              <div class="form-group">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+              {% bootstrap_form_errors contact_form %}
 
-              </div>
-              <div class="form-group">
-                <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                  {% bootstrap_field contact_form.name show_label=False %}
 
-              </div>
-              <div class="form-group">
-                <div style="display:inline-block;">
-                  <label for="id_math_check">What is 3 x 2?</label>
-                  <input type="text" class="form-control" name="math_check" id="id_math_check" rows="5" data-rule="required" placeholder="Math Check"></input>
-                </div>
-              </div>
-                <div>
-                  <button class="g-recaptcha" 
-                    data-sitekey="6LdTxBUaAAAAAAbdD34Vt64t_X-4j9yORB2c0Pzm" 
-                    data-callback='onSubmit' 
-                    data-action='submit'             
-                    type="submit" 
-                    title="Send Message">Send Message</button>
-                </div>
+                  {% bootstrap_field contact_form.email show_label=False %}
+
+                  {% bootstrap_field contact_form.subject show_label=False %}
+
+                  {% bootstrap_field contact_form.message show_label=False %}
+                  {% bootstrap_field contact_form.captcha %}
+
+                  <div class="text-center mt-3">
+                    <button type="submit" class="btn btn-primary donate-btn">Send Message</button>
+                  </div>
             </form>
 
           </div>
@@ -350,12 +329,6 @@ function stripeTokenHandler(token) {
   form.submit();
 }
 </script>
- <script src="https://www.google.com/recaptcha/api.js"></script>
-  <script>
-   function onSubmit(token) {
-     document.getElementById("contactForm").submit();
-   }
- </script>
 {% endblock footscript %}
 
 
